@@ -3,7 +3,7 @@
 from urllib.parse import urljoin
 
 __project__ = "sitepages"
-__version__ = "0.1.alpha.1"
+__version__ = "0.1"
 __description__ = "Web pages of a site."
 __urlhome__ = "https://github.com/bondbox/sitepages/"
 __urlcode__ = __urlhome__
