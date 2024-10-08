@@ -22,7 +22,7 @@ class page:
     @property
     def label(self) -> str:
         encode: bytes = self.url.encode(encoding="utf-8")
-        decode: str = b64encode(encode).decode(encoding="utf-8")
+        decode: str = b64encode(encode).decode(encoding="utf-8").rstrip("=")
         return f"{datetime.now().strftime(f'%Y%m%d%H%M%S')}-{decode}"
 
     def save(self, path: Optional[str] = None) -> str:
