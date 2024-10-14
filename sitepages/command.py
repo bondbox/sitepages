@@ -14,7 +14,7 @@ from .attribute import __version__
 from .sites import page
 
 
-@add_command("download", help="Download webpages")
+@add_command("download", help="Download webpage")
 def add_cmd_download(_arg: argp):
     _arg.add_argument(dest="url", type=str, nargs=1, metavar="URL",
                       help="uniform resource locator")
@@ -43,5 +43,5 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     return cmds.run(
         root=add_cmd,
         argv=argv,
-        description="Web pages of a site.",
+        description="Get webpage. Generate response.",
         epilog=f"For more, please visit {__urlhome__}.")

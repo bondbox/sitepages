@@ -1,3 +1,3 @@
 # sitepages
 
-> Web pages of a site.
+> Get webpage. Generate response.
