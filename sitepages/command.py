@@ -11,7 +11,7 @@ from xarg import run_command
 from .attribute import __project__
 from .attribute import __urlhome__
 from .attribute import __version__
-from .sites import page
+from .sitepage import page
 
 
 @add_command("download", help="Download webpage")
