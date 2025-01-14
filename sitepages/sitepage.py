@@ -40,10 +40,10 @@ class page:
             hdl.write(self.fetch())
         return file
 
-    def fetch(self) -> str:
+    def fetch(self) -> Response:
         response = self.session.get(self.url)
         response.raise_for_status()
-        return response.text
+        return response
 
 
 class cache_page(page):
