@@ -36,8 +36,8 @@ class page:
 
     def save(self, path: Optional[str] = None) -> str:
         file: str = self.label if path is None else os.path.join(path, self.label) if os.path.isdir(path) else path  # noqa:E501
-        with open(file=file, mode="w") as hdl:
-            hdl.write(self.fetch())
+        with open(file=file, mode="wb") as hdl:
+            hdl.write(self.fetch().content)
         return file
 
     def fetch(self) -> Response:
@@ -50,7 +50,7 @@ class cache_page(page):
     def __init__(self, url: str, session: Optional[Session] = None,
                  period: int = -1):
         super().__init__(url=url, session=session)
-        self.__cache: Optional[str] = None
+        self.__cache: Optional[Response] = None
         self.__period: int = period
         self.__timpstamp: float = 0.0
 
@@ -72,7 +72,7 @@ class cache_page(page):
             return True
 
     @property
-    def cache(self) -> str:
+    def cache(self) -> Response:
         if self.__cache is None or self.expired:
             self.__cache = super().fetch()
             self.__timpstamp = time()
@@ -88,7 +88,7 @@ class cache_soup(cache_page):
     @property
     def soup(self) -> BeautifulSoup:
         if self.__soup is None:
-            self.__soup = BeautifulSoup(self.cache, "html.parser")
+            self.__soup = BeautifulSoup(self.cache.content, "html.parser")
         return self.__soup
 
 
