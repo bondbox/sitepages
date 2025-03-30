@@ -1,3 +1,3 @@
 # sitepages
 
-> Get webpage. Generate response.
+> Web request module

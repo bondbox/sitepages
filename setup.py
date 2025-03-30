@@ -1,5 +1,7 @@
 # coding=utf-8
 
+from urllib.parse import urljoin
+
 from setuptools import find_packages
 from setuptools import setup
 
@@ -7,11 +9,12 @@ from sitepages.attribute import __author__
 from sitepages.attribute import __author_email__
 from sitepages.attribute import __description__
 from sitepages.attribute import __project__
-from sitepages.attribute import __urlbugs__
-from sitepages.attribute import __urlcode__
-from sitepages.attribute import __urldocs__
 from sitepages.attribute import __urlhome__
 from sitepages.attribute import __version__
+
+__urlcode__ = __urlhome__
+__urldocs__ = __urlhome__
+__urlbugs__ = urljoin(__urlhome__, "issues")
 
 
 def all_requirements():
@@ -33,5 +36,5 @@ setup(
     project_urls={"Source Code": __urlcode__,
                   "Bug Tracker": __urlbugs__,
                   "Documentation": __urldocs__},
-    packages=find_packages(include=["sitepages*"], exclude=["tests"]),
+    packages=find_packages(include=["sitepages*"], exclude=["sitepages.unittest"]),  # noqa:E501
     install_requires=all_requirements())
